@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--	<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">-->
+    <!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">-->
+</head>
+
+<body>
+<div class="app-wrap">
+    <header>
+        <form th:action="@{/index}" method="post">
+            <input type="text" autocomplete="off" class="search-box" name="city" placeholder="Search for a city..."/>
+        </form>
+    </header>
+
+    <div>
+        <main>
+
+            <section class="location">
+                <div class="city" th:text="${weather.city}+', ' + ${weather.country}"></div>
+                <div class="date" th:text="${date}"></div>
+            </section>
+            <div class="current">
+                <div class="temp" th:text="${weather.temp}+'°c'"><span></span></div>
+                <div class="weather" th:text="${weather.description}"></div>
+                <div class="hi-low" th:text="'wind speed : '+${weather.wind}+' m/s'"></div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/script.js"></script>
+</div>
+    </body>
+
+</html>
